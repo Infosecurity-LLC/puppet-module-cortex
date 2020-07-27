@@ -21,7 +21,7 @@ The Puppet `cortex` class provides a default installation of Cortex. Before impo
 
 > Note: This module does not handle a reverse proxy. An example for creating a reverse proxy using Apache is provided [below](#creating-a-reverse-proxy).
 
-#### Using Heira
+#### Using Hiera
 
 The default parameters are present in the [manifests/init.pp](manifests/init.pp) file, which one can override, if required. Since `play_secret_key` is a required parameter, its value must be specified. To change the port on which the Cortex instance should be listening, update the `port` variable in the Hiera configuration:
 
@@ -94,7 +94,7 @@ For passing additional parameters, consult the documentation in: [https://forge.
 
 ### Cortex configuration file
 
-The template for Cortex configuration file is present in [templates/application.erb](templates/application.erb). The configurable parameters are listed below:
+The template for Cortex configuration file is present in [templates/application.erb](templates/application.erb), you can change it own template. The configurable parameters are listed below:
 
 * `play_secret_key`:  Play framework secret key [required]
 * `port`: Port where Cortex instance should be started (default: `9001`)
@@ -104,6 +104,7 @@ The template for Cortex configuration file is present in [templates/application.
 * `source_url`: Source URL for Cortex RPM (default: `''`)
 * `config_dir`: Cortex configuration directory (default: `'/etc/cortex'`)
 * `config_file`: Cortex configuration file (default: `'application.conf'`)
+* `config_template`: Template for config file (default: `cortex/application.erb`)
 * `analyzers_path`: Path where to store Cortex-Analyzers (default: `'/opt/cortex/analyzers'`)
 * `analyzers_git_repo`: GitHub repository for Cortex-Analyzers (default: `'https://github.com/TheHive-Project/Cortex-Analyzers.git'`)
 * `analyzers_git_repo_tag`: GitHub repository tag for Cortex-Analyzers (default: `'1.14.4'`)
@@ -112,8 +113,7 @@ The template for Cortex configuration file is present in [templates/application.
 * `analyzers_max_parallelism`: Maximum number of threads available for analyzers (default: `4`)
 * `elasticsearch_index`: ElasticSearch index name (default: `'the_hive'`)
 * `elasticsearch_cluster_name`: ElasticSearch cluster name (default: `'hive'`)
-* `elasticsearch_host_address`: ElasticSearch host address (default: `'127.0.0.1'`)
-* `elasticsearch_host_port`: ElasticSearch host port (default: `'9300'`)
+* `elasticsearch_uri`: URL for connect to ElasticSearch (default: `"http://127.0.0.1:9200/"`). If multiple Elasticsearch nodes are used as a cluster, you should add addresses of the master nodes in the url like this: `http://node1:9200,node2:9200/`
 * `elasticsearch_docker_image`: Docker image used for ElasticSearch (default: `'docker.elastic.co/elasticsearch/elasticsearch:5.6.14'`)
 * `elasticsearch_scroll_keepalive`: Scroll keepalive time (default: `'1m'`)
 * `elasticsearch_scroll_pagesize`: Scroll page size (default: `50`)

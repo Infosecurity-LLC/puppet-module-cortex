@@ -14,6 +14,7 @@ class cortex (
   String $source_url = '',
   String $config_dir = '/etc/cortex',
   String $config_file = 'application.conf',
+  String $config_template = 'cortex/application.erb',
   # Cortex-Analyzers GitHub repository.
   String $analyzers_path = '/opt/cortex/analyzers',
   String $analyzers_git_repo = 'https://github.com/TheHive-Project/Cortex-Analyzers.git',
@@ -24,8 +25,7 @@ class cortex (
   # ElasticSearch configuration variables.
   String $elasticsearch_index = 'the_hive',
   String $elasticsearch_cluster_name = 'hive',
-  String $elasticsearch_host_address = '127.0.0.1',
-  Integer $elasticsearch_host_port = 9300,
+  String $elasticsearch_uri = 'http://127.0.0.1:9200/',
   String $elasticsearch_scroll_keepalive = '1m',
   Integer $elasticsearch_scroll_pagesize = 50,
   Integer $elasticsearch_shards_count = 5,

@@ -16,7 +16,7 @@ search {
   cluster = <%= @elasticsearch_cluster_name %>
 
   # ElasticSearch instance address.
-  host = ["<%= @elasticsearch_host_address %>:<%= @elasticsearch_host_port %>"]
+  uri = "<%= @elasticsearch_uri %>"
 
   ## Advanced configuration
   # Scroll keepalive.

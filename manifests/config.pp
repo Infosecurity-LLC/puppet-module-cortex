@@ -24,7 +24,7 @@ class cortex::config inherits cortex {
 
   file { "${cortex::config_dir}/${cortex::config_file}":
     ensure  => file,
-    content => template('cortex/application.erb'),
+    content => template($cortex::config_template),
     owner   => $cortex::user,
     group   => $cortex::group,
     mode    => '0440',
