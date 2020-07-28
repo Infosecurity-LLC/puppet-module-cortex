@@ -23,7 +23,7 @@ class cortex (
   Integer $analyzers_factor_parallelism = 2,
   Integer $analyzers_max_parallelism = 4,
   # ElasticSearch configuration variables.
-  String $elasticsearch_index = 'the_hive',
+  String $elasticsearch_index = 'cortex',
   String $elasticsearch_cluster_name = 'hive',
   String $elasticsearch_uri = 'http://127.0.0.1:9200/',
   String $elasticsearch_scroll_keepalive = '1m',
