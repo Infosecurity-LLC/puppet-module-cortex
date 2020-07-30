@@ -175,6 +175,9 @@ The template for Cortex configuration file is present in [templates/application.
   - `auth_sso_mapping_permissions`: SSO mapping permissions (default: `['admin']`)
 * `session_authentication_warning`: Maximum warning time between two requests without requesting authentication (default: `'5m'`)
 * `session_authentication_inactivity`: Maximum inactivity time between two requests without requesting authentication (default: `'1h'`)
+* `cache_job`: Cache for job in minutes (default: `10`)
+* `cache_user`: Cache for user in minutes (default: `5`)
+* `cache_organization`: Cache for organization in minutes (default: `5`)
 * `http_parser_maxmemorybuffer`: Maximum textual content length (default: `'1M'`)
 * `http_parser_maxdiskbuffer`: Maximum file size (default: `'1G'`)
 

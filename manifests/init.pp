@@ -95,10 +95,14 @@ class cortex (
     'auth_sso_mapping_permissions' => ['admin']}
   ],
   # Configuration variables for controlling session timeout.
-  String $session_authentication_warning = '5m',
-  String $session_authentication_inactivity = '1h',
-  String $http_parser_maxmemorybuffer = '1M',
-  String $http_parser_maxdiskbuffer = '1G',
+  String  $session_authentication_warning = '5m',
+  String  $session_authentication_inactivity = '1h',
+  # Configuration variables for cache time (in minutes)
+  Integer $cache_job = 10,
+  Integer $cache_user = 5,
+  Integer $cache_organization = 5,
+  String  $http_parser_maxmemorybuffer = '1M',
+  String  $http_parser_maxdiskbuffer = '1G',
   # Configuration variables required for setting up Cortex analyzers.
   String $c1fapp_secret_key = '',
   String $google_safe_browsing_secret_key = '',

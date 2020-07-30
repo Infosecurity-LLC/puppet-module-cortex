@@ -300,6 +300,12 @@ session {
   inactivity = "<%= @session_authentication_inactivity %>"
 }
 
+cache {
+  job = <%= @cache_job %> minutes
+  user = <%= @cache_user %> minutes
+  organization = <%= @cache_organization %> minutes
+}
+
 # Max textual content length
 play.http.parser.maxMemoryBuffer = "<%= @http_parser_maxmemorybuffer %>"
 # Max file size
