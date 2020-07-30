@@ -19,14 +19,15 @@ class cortex (
   String  $config_file = 'application.conf',
   String  $config_template = 'cortex/application.erb',
   # Cortex-Analyzers GitHub repository.
-  Array   $analyzers_path = ['/opt/cortex/analyzers'],
+  Array   $analyzers_path = ['/opt/cortex/analyzers/analyzers'],
+  Optional[String] $analyzers_git_path = '/opt/cortex/analyzers',
   String  $analyzers_git_repo = 'https://github.com/TheHive-Project/Cortex-Analyzers.git',
-  String  $analyzers_git_repo_tag = '1.14.4',
+  String  $analyzers_git_repo_tag = '2.8.6',
   Integer $analyzers_min_parallelism = 2,
   Integer $analyzers_factor_parallelism = 2,
   Integer $analyzers_max_parallelism = 4,
   # Cortex Responders default get from Cortex-Analyzers
-  Array   $responders_path = ['/opt/cortex/analyzers'],
+  Array   $responders_path = ['/opt/cortex/analyzers/responders'],
   Integer $responders_min_parallelism = 2,
   Integer $responders_factor_parallelism = 2,
   Integer $responders_max_parallelism = 4,

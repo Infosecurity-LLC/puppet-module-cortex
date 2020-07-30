@@ -28,16 +28,19 @@ class cortex::config inherits cortex {
     owner   => $cortex::user,
     group   => $cortex::group,
     mode    => '0440',
-    notify  => Service['cortex.service']
+    notify  => Service['cortex.service'],
   }
 
   # Clone the Cortex-Analyzers GitHub repository.
-  vcsrepo { $cortex::analyzers_path:
-    ensure   => present,
-    provider => git,
-    source   => $cortex::analyzers_git_repo,
-    revision => $cortex::analyzers_git_repo_tag,
-    owner    => $cortex::user,
-    group    => $cortex::group,
+  if $cortex::analyzers_git_path {
+    vcsrepo { $cortex::analyzers_git_path:
+      ensure   => present,
+      provider => git,
+      source   => $cortex::analyzers_git_repo,
+      revision => $cortex::analyzers_git_repo_tag,
+      owner    => $cortex::user,
+      group    => $cortex::group,
+      notify  => Service['cortex.service'],
+    }
   }
 }
