@@ -67,10 +67,14 @@ search {
   <% end -%>
 }
 
+## ANALYZERS
+#
 analyzer {
   # Directory that holds analyzers
   path = [
-    "<%= @analyzers_path %>/analyzers"
+<% analyzers_path.each_with_index do |n,j| -%>
+        "<%= n %>/analyzers"<%= ',' if j < (analyzers_path.size - 1) %>
+<% end -%>
   ]
 
   fork-join-executor {
@@ -80,6 +84,26 @@ analyzer {
     parallelism-factor = <%= @analyzers_factor_parallelism %>
     # Max number of threads available for analyze
     parallelism-max = <%= @analyzers_max_parallelism %>
+  }
+}
+
+## RESPONDERS
+#
+responder {
+  # Directory that holds responders
+  path = [
+<% responders_path.each_with_index do |n,j| -%>
+        "<%= n %>/responders"<%= ',' if j < (responders_path.size - 1) %>
+<% end -%>
+  ]
+
+  fork-join-executor {
+    # Min number of threads available for analyze
+    parallelism-min = <%= @responders_min_parallelism %>
+    # Parallelism (threads) ... ceil(available processors * factor)
+    parallelism-factor = <%= @responders_factor_parallelism %>
+    # Max number of threads available for analyze
+    parallelism-max = <%= @responders_max_parallelism %>
   }
 }
 

@@ -28,6 +28,7 @@ class cortex::config inherits cortex {
     owner   => $cortex::user,
     group   => $cortex::group,
     mode    => '0440',
+    notify  => Service['cortex.service']
   }
 
   # Clone the Cortex-Analyzers GitHub repository.
