@@ -5,8 +5,8 @@ play.http.secret.key = <%= @play_secret_key %>
 
 # Port number for Cortex server.
 http.port = <%= @port %>
-# HTTPS for Cortex
 <% if @https_port -%>
+# HTTPS for Cortex
 https.port: <%= @https_port %>
 play.server.https.keyStore {
   path: "<%= @https_keystore_path %>"
