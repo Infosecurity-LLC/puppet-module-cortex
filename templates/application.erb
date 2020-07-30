@@ -72,8 +72,8 @@ search {
 analyzer {
   # Directory that holds analyzers
   path = [
-<% analyzers_path.each_with_index do |n,j| -%>
-        "<%= n %>/analyzers"<%= ',' if j < (analyzers_path.size - 1) %>
+<% @analyzers_path.each_with_index do |n,j| -%>
+        "<%= n %>/analyzers"<%= ',' if j < (@analyzers_path.size - 1) %>
 <% end -%>
   ]
 
@@ -92,8 +92,8 @@ analyzer {
 responder {
   # Directory that holds responders
   path = [
-<% responders_path.each_with_index do |n,j| -%>
-        "<%= n %>/responders"<%= ',' if j < (responders_path.size - 1) %>
+<% @responders_path.each_with_index do |n,j| -%>
+        "<%= n %>/responders"<%= ',' if j < (@responders_path.size - 1) %>
 <% end -%>
   ]
 
