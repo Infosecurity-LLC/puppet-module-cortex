@@ -42,14 +42,14 @@ search {
     mapping.nested_fields.limit = <%= @elasticsearch_max_nested_fields %>
   }
 
+<% if @elasticsearch_xpack_enabled -%>
   ### XPack SSL configuration
   # Username for XPack authentication
-  <% if @elasticsearch_xpack_enabled == true -%>
   search.username = "<%= @elasticsearch_xpack_username %>"
   # Password for XPack authentication
   search.password = "<%= @elasticsearch_xpack_password %>"
-  <% end -%>
-  <% if @elasticsearch_ssl_enabled == true -%>
+<% end -%>
+<% if @elasticsearch_ssl_enabled -%>
   # Enable SSL to connect to ElasticSearch
   search.ssl.enabled = "<%= @elasticsearch_ssl_enabled %>"
   # Path to certificate authority file
@@ -58,8 +58,8 @@ search {
   search.ssl.certificate = "<%= @elasticsearch_certificate_path %>"
   # Path to key file
   search.ssl.key = "<%= @elasticsearch_ssl_key %>"
-  <% end -%>
-  <% if @elasticsearch_searchguard_enabled == true -%>
+<% end -%>
+<% if @elasticsearch_searchguard_enabled -%>
   #)  ### SearchGuard configuration
   # Path to JKS file containing client certificate
   search.guard.keyStore.path = "<%= @elasticsearch_searchguard_keystore_path %>"
@@ -73,7 +73,7 @@ search {
   search.guard.hostVerification = "<%= @elasticsearch_searchguard_host_verification %>"
   # If hostname verification is enabled specify if hostname should be resolved
   search.guard.hostVerificationResolveHostname = "<%= @elasticsearch_searchguard_host_verification_resolve_hostname %>"
-  <% end -%>
+<% end -%>
 }
 
 ## ANALYZERS
@@ -198,7 +198,7 @@ auth {
   method.basic = "<%= @auth_basic_enabled %>"
 
 
-  <% if @auth_active_directory_enabled == true -%>
+  <% if @auth_active_directory_enabled -%>
   ad {
     # The Windows domain name in DNS format. This parameter is required if you do not use
     # 'serverNames' below.
@@ -216,7 +216,7 @@ auth {
   }
   <% end -%>
 
-  <% if @auth_ldap_enabled == true -%>
+  <% if @auth_ldap_enabled -%>
   ldap {
     # The LDAP server name or address. The port can be specified using the 'host:port'
     # syntax. This parameter is required if you don't use 'serverNames' below.
@@ -243,7 +243,7 @@ auth {
   }
   <% end -%>
 
-  <% if @auth_oauth2_sso_enabled == true -%>
+  <% if @auth_oauth2_sso_enabled -%>
   oauth2 {
     # Client ID for OAuth2.
     clientId = "<%= @auth_oauth2_client_id %>"
