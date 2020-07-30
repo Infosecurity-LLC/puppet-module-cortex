@@ -27,7 +27,7 @@ The default parameters are present in the [manifests/init.pp](manifests/init.pp)
 
 ```yaml
 cortex::play_secret_key: '<secret key>'
-cortex::port: 9999
+cortex::port: '9999'
 ```
 
 Then include the class in your manifest file.
@@ -43,7 +43,7 @@ The secret key and port can also be provided as a parameter to the class declara
 ```ruby
 class cortex {
   play_secret_key => '<secret key>',
-  port            => 9999
+  port            => '9999'
 }
 ```
 
@@ -97,7 +97,10 @@ For passing additional parameters, consult the documentation in: [https://forge.
 The template for Cortex configuration file is present in [templates/application.erb](templates/application.erb), you can change it own template. The configurable parameters are listed below:
 
 * `play_secret_key`:  Play framework secret key [required]
-* `port`: Port where Cortex instance should be started (default: `9001`)
+* `port`: Port where Cortex instance should be started, `String` (default: `'9001'`)
+* `https_port`: Https port where Cortex instance should be started, `Optional[String]` (default: `undef`)
+* `https_keystore_path`: Path to keystore for https, `String` (default: `''`)
+* `https_keystore_password`: Password for keystore for https, `String` (default: `''`)
 * `user`: User who owns the Cortex repository and configuration directory (default: `cortex`)
 * `group`: Group who owns the Cortex repository and configuration directory (default: `cortex`)
 * `install_from_source`: Whether to install the RPM from source (default: `false`)

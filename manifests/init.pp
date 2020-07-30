@@ -7,7 +7,10 @@ class cortex (
   # `cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 64 | head -n 1`
   String $play_secret_key,
   # The port where the Cortex server should be started.
-  Integer $port = 9001,
+  String  $port = '9001',
+  Optional[String] $https_port= undef,
+  String  $https_keystore_path = '',
+  String  $https_keystore_password ='',
   String  $user = 'cortex',
   String  $group = 'cortex',
   Boolean $install_from_source = false,
