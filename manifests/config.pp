@@ -34,7 +34,7 @@ class cortex::config inherits cortex {
   # Clone the Cortex-Analyzers GitHub repository.
   if $cortex::analyzers_git_path {
     vcsrepo { $cortex::analyzers_git_path:
-      ensure   => present,
+      ensure   => latest,
       provider => git,
       source   => $cortex::analyzers_git_repo,
       revision => $cortex::analyzers_git_repo_tag,
